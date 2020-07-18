@@ -12,13 +12,11 @@ $(document).on("click","#salvar",function(){
       "ano":$("#ano").val(),
       "genero":$("#genero").val(),
       "classificacao":$("#classificacao").val(),   
-      "preco":$("#preco").val(),   
-      "dt_compra":$("#dt_compra").val(),   
       "sinopse":$("#sinopse").val()      
     }
     $.ajax({
       type:"post", //como vai enviar os dados
-      url:"", //pra onde vai enviar os dados
+      url:"https://walled-ranks.000webhostapp.com/webservice/cadastrar.php", //pra onde vai enviar os dados
       data:parametros,//o que será enviado
 
       //se funcionar
@@ -27,9 +25,7 @@ $(document).on("click","#salvar",function(){
         $("#nome").val(""),
         $("#ano").val(""),
         $("#genero").val(""),
-        $("#classificacao").val(""),    
-        $("#preco").val(""),    
-        $("#dt_compra").val(""),    
+        $("#classificacao").val(""),       
         $("#sinopse").val("")    
       },
 
@@ -43,7 +39,7 @@ $(document).on("click","#salvar",function(){
 function listar(){
   $.ajax({
     type: "post",
-    url: "",
+    url: "https://walled-ranks.000webhostapp.com/webservice/listar.php",
     dataType:"json", //o que vai receber ou como vai receber
     success: function(data){
       var itemLista = "";
@@ -65,7 +61,7 @@ $(document).on("change","#listaFilmes",function(){
 
   $.ajax({
     type: "post",
-    url: " ",
+    url: "https://walled-ranks.000webhostapp.com/webservice/listar-um-registro.php",
     data:parametro,
     dataType:"json",// o que vai receber e como vai receber
     success: function(data){
@@ -74,8 +70,6 @@ $(document).on("change","#listaFilmes",function(){
         $("#ano").val(data.filmes.ano);
         $("#genero").val(data.filmes.genero);
         $("#classificacao").val(data.filmes.classificacao);
-        $("#preco").val(data.filmes.preco);
-        $("#dt_compra").val(data.filmes.dt_compra);
         $("#sinopse").val(data.filmes.sinopse);
     },
     error: function(data){
@@ -89,8 +83,6 @@ function habilitarCampos(){
     $("#ano").prop("readonly",false);
     $("#genero").prop("readonly",false);
     $("#classificacao").prop("readonly",false);
-    $("#preco").prop("readonly",false);
-    $("#dt_compra").prop("readonly",false);
     $("#sinopse").prop("readonly",false);
 }
 
@@ -99,8 +91,6 @@ function desabilitarCampos(){
     $("#ano").prop("readonly",true);
     $("#genero").prop("readonly",true);
     $("#classificacao").prop("readonly",true);
-    $("#preco").prop("readonly",true);
-    $("#dt_compra").prop("readonly",true);
     $("#sinopse").prop("readonly",true);
 }
 
@@ -114,9 +104,7 @@ $(document).on("click","#cancelar",function(){
     $("#nome").val("");
     $("#ano").val("");
     $("#genero").val("");
-    $("#classificacao").val("");    
-    $("#preco").val("");    
-    $("#dt_compra").val("");    
+    $("#classificacao").val("");        
     $("#sinopse").val(""); 
 });
 
@@ -126,14 +114,12 @@ $(document).on("click","#salvarEdicao",function(){
       "nome":$("#nome").val(),
       "ano":$("#ano").val(),
       "genero":$("#genero").val(),   
-      "classificacao":$("#classificacao").val(),   
-      "preco":$("#preco").val(),   
-      "dt_compra":$("#dt_compra").val(),   
+      "classificacao":$("#classificacao").val(),     
       "sinopse":$("#sinopse").val()   
     }
     $.ajax({
       type:"post", //como vai enviar os dados
-      url:"", //pra onde vai enviar os dados
+      url:"https://walled-ranks.000webhostapp.com/webservice/atualizar.php", //pra onde vai enviar os dados
       data:parametros,//o que será enviado
 
       //se funcionar
@@ -156,7 +142,7 @@ $(document).on("click","#excluir",function(){
     }
     $.ajax({
       type:"post", //como vai enviar os dados
-      url:"", //pra onde vai enviar os dados
+      url:"https://walled-ranks.000webhostapp.com/webservice/deletar.php", //pra onde vai enviar os dados
       data:parametros,//o que será enviado
 
       //se funcionar
